@@ -1,0 +1,21 @@
+CREATE DATABASE cesde_courses;
+
+USE cesde_courses;
+
+CREATE TABLE docente (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    documento VARCHAR(20) UNIQUE NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE curso (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    duracion INT,
+    precio DECIMAL(10, 2),
+    fecha_inicio DATETIME,
+    docente_id INT,
+    CONSTRAINT fk_docente FOREIGN KEY (docente_id) REFERENCES docente(id)
+);
